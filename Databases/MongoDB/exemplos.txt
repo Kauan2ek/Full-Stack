@@ -1,0 +1,42 @@
+// Inserindo dados - apenas um
+db.usuarios.insertOne( {
+{nome: 'Júlio', email: 'julio@gmail'}
+} )
+
+
+// Inserindo múltiplos dados
+db.usuarios.insertMany([
+{nome: 'Kauan', email: 'kauan@gmail'},
+{nome: 'Mario', email: 'mario@gmail'},
+{nome: 'Maria', email: 'marie@gmail'},
+{nome: 'Maria', email: 'maria@gmail'},
+{nome: 'João', email:  'joaoo@gmail'},
+{nome: 'Pedro', email: 'pedro@gmail'},
+])
+
+
+// Usando o LIKE
+db.usuarios.find( {
+nome: {$regex: '^M'}
+} )
+
+
+// Utilizando o aggregate
+db.postagens.aggregate([ {$match: {'autor.nome': 'Bruno'}}, {$project: {id: true, titulo: true, curtidas: true}}, {$sort: {id: 1}} ])
+
+
+// Total de curtidas
+db.postagens.aggregate([ { $group: {_id:'$autor.nome', totalCurtidas: {$sum: '$curtidas'} } } ])
+
+
+// Relacionamento por referência
+db.postagensRef.aggregate([ {
+$lookup: {
+  from: 'usuarios',
+  foreignField: 'id',
+  localField: 'idUsuario',
+  as: 'usuario'
+  }
+} ])
+
+

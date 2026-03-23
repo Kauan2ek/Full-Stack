@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabelas</title>
+</head>
+
+<body>
+    <form action="processa.html">
+        <fieldset>
+            <legend>Dados pessoais</legend>
+
+            <label for="nome">Nome</label><br>
+            <input type="nome" name="nome" id="nome"><br><br>
+
+            <label for="email">Email</label><br>
+            <input type="text" id="email" name="email"><br><br>
+
+            <input type="checkbox" name="receber_email" id="receber_email" value="ativado">
+            <label for="receber_email">Quero receber e-mail</label><br><br>
+
+            <label for="senha">Senha</label><br>
+            <input type="password" id="senha" name="senha">
+        </fieldset>
+
+        <fieldset>
+            <legend>Informações adicionais</legend>
+
+            <input type="radio" name="tipo" id="pf" value="PF">
+            <label for="pf">Pessoa Física</label>
+
+            <input type="radio" name="tipo" id="pj" value="PJ">
+            <label for="pf">Pessoa Jurídica</label>
+        </fieldset>
+
+        <br>
+        <input type="submit" value="Cadastrar">
+    </form>
+</body>
+
+</html>

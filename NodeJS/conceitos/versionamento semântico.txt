@@ -1,0 +1,18 @@
+18.1.2
+major.minor.patch
+major: atualização com necessidade de readequação de código, ou seja, quebra de compatibilidade com a versão anterior
+minor: atualização com adicionais, mas sem alterar a compatibilidade de suas versões anteriores
+patch: correções pequenas de aperfeiçoamento e correção de bugs
+
+SÍMBOLOS
+"react": "19.0.0" - aceita apenas dependência dessa exata versão
+"react": "19.0.0" - aceita atualizações do tipo minor e patch
+"react": "~19.0.0" - aceita apenas atualizações do tipo patch
+"react": ">=16.8.0 < 17.0.0" - define o intervalo de versões permitidas
+"react": "*" - qualquer versão é permitida, por isso, utiliza a mais recente
+"react": "17.x" - Obritoriamente major v17, e qualquer versão minor e patch
+"react": "17.*" - Obritoriamente major v17, e qualquer versão minor e patch
+"react": "latest" - Última versão lts
+"react": "16.x || 17.x" - aceita a versão 16 ou a versão 17
+
+https://semver.org/lang/pt-BR/
