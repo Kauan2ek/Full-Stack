@@ -1,0 +1,39 @@
+FROM alpine:3.19.0
+# docker image inspect --format='{{json .Config.Labels}}' <id_da_imagem>
+
+ENV DESENVOLVEDOR="Kauan Dias"
+
+RUN <<EOF
+    apk add --no-cache nodejs
+    apk add --no-cache npm
+    apk add --no-cache git
+    apk add --no-cache nano
+EOF
+
+LABEL desenvolvedor=${DESENVOLVEDOR} \
+      descricao="Imagem criada para exemplificar  a utilização de Labels no Dockerfile" \
+      versao="1.0" \
+      contato="+55 17 98293-8123"
+
+# Não pode haver espaço entre a variável de ambiente e o sinal de igual (=), caso contrário, o Dockerfile não será construído corretamente e resultará em um erro.
+# ENV FRONT_PRD="https://www.frontendpractices.com" \
+# ENV BACK_PRD="https://www.backendpractices.com" \
+# ENV VERSAO="1.0.1"
+
+# Sintaxe alternativa sem o "=
+# ENV FRONT_DEV "https://www.frontenddev.com"
+# ENV BACK_DEV "https://www.backenddev.com"
+# ENV VERSAO "1.0.1"
+
+# Múltiplas linhas
+ENV FRONT_TEST="https://www.frontendtest.com" \
+    BACK_TEST="https://www.backendtest.com" \
+    VERSAO="1.0.1" 
+
+
+ENV MSG "Variável de ambiente criada no Dockerfile"
+RUN echo ${MSG} > /tmp/arquivo_criado_durante_o_build_da_imagem.txt
+
+
+# Para verificar as variáveis de ambiente definidas na imagem, você pode usar o comando docker run com a opção -e para imprimir as variáveis de ambiente no terminal. Por exemplo:
+# docker run --rm <id_da_imagem> env

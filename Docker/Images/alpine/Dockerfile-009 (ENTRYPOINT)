@@ -1,0 +1,18 @@
+ARG ALPINE_VERSION="3.19.0"
+
+# FROM alpine:3.19.0
+FROM alpine:${ALPINE_VERSION}
+
+# Serviço: Imprimir um texto no terminal
+# ENTRYPOINT: Não é sobrescrito via terminal
+# ENTRYPOINT [ "echo", "Parâmetro 1 - Instrução via ENTRYPOINT", "\n" ]
+# CMD [ "Parâmetro 2 - Instrução via CMD" ]
+
+# Serviço: Listar o conteúdo do diretório raiz
+# ENTRYPOINT ["ls"] 
+# CMD ["-la"] 
+# ls -la
+
+COPY ./sh/dockerfile-entrypoint.sh /start/dockerfile-entrypoint.sh
+RUN chmod +x /start/dockerfile-entrypoint.sh
+ENTRYPOINT ["./start/dockerfile-entrypoint.sh"]

@@ -1,0 +1,27 @@
+FROM alpine:3.19.0
+
+# Instalando dependências no SO
+# Primeira maneira - cada comando em um RUN separado
+# Essa maneira é menos eficiente, pois cada comando RUN cria uma nova camada na imagem Docker, resultando em uma imagem final maior e mais pesada.
+# RUN apk add --no-cache nodejs
+# RUN apk add --no-cache npm
+# RUN apk add --no-cache git
+
+# Segunda maneira - em um único RUN com uma única linha
+# Essa maneira é mais eficiente, pois reduz o número de camadas na imagem Docker, resultando em uma imagem final menor e mais leve.
+# RUN apk add --no-cache nodejs && apk add --no-cache npm && apk add --no-cache git
+# RUN apk add --no-cache nodejs && \
+#     apk add --no-cache npm && \ 
+#     apk add --no-cache git
+# RUN apk add --no-cache nodejs \ 
+#     && apk add --no-cache npm \
+#     && apk add --no-cache git
+
+# Terceira maneira - Arquivo literal (heredoc) para executar múltiplos comandos em um único RUN
+RUN <<EOF
+    apk add --no-cache nodejs
+    apk add --no-cache npm
+    apk add --no-cache git
+EOF
+#EOF: End Of File
+LABEL maintainer="Gustavo" version="1.0" description="Imagem Docker com Node.js, npm e git instalados"

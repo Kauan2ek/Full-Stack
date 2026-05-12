@@ -1,0 +1,23 @@
+docker build -t kauan-dias/spotify:1.0.3 ./directory -> constrói uma imagem com a tag "kauan-dias..." a partir do arquivo Dockerfile (se estiver presente) no diretório indicado
+
+
+
+docker images -> lista as imagens
+docker images -a -> lista todas as imagens (inclusive as sem tag)
+
+docker image inspect --format='{{json .Config.Labels}}' <id_da_imagem> -> Exibe no formato JSON o valor das labels de uma imagem
+
+
+
+docker run it <id_da_imagem> /bin/sh -> executa a imagem em um container e o terminal interativo do SO da imagem
+docker run --build-arg FRONT_PRD='https:meuapp.com:2030' -> Define o valor de um ARG
+
+docker run <id_da_imagem> <command> -> executa o comando indicado (CMD) dentro do SO da imagem indicada
+
+
+
+docker system prune -a -> remove todos as imagens e containers que não estão sendo utilizados
+
+docker rmi <id_da_imagem> -> remove a imagem
+
+docker ps -a -> exibe todos os containers (inclusive os já terminados)
