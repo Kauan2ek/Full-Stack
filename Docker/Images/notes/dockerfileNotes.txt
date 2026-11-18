@@ -1,0 +1,17 @@
+ADD <origem> <destino>
+
+Instruções que geram camadas (afeta a estrutura de arquivos da imagem)
+FROM
+RUN 
+ADDCOPY
+WORKDIR
+VOLUME
+
+Instruções que não geram camadas
+LABEL
+ENV
+ARG
+USER
+CMD
+ENTRYPOINT
+EXPOSE

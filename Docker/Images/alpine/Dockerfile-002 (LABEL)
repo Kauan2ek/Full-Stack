@@ -1,0 +1,22 @@
+FROM alpine:3.19.0
+# docker image inspect --format='{{json .Config.Labels}}' <id_da_imagem>
+
+RUN <<EOF
+    apk add --no-cache nodejs
+    apk add --no-cache npm
+    apk add --no-cache git
+EOF
+
+# LABEL desenvolvedor="Kauan Dias"
+# LABEL descricao="Imagem criada para exemplificar  a utilização de Labels no Dockerfile"
+# LABEL versao="1.0"
+# LABEL contato="+55 17 98293-8123"
+
+# Única linha
+# LABEL desenvolvedor="Kauan Dias" descricao="Imagem criada para exemplificar  a utilização de Labels no Dockerfile" versao="1.0" contato="+55 17 98293-8123"
+
+# Múltiplas linhas
+LABEL desenvolvedor="Kauan Dias" \
+      descricao="Imagem criada para exemplificar  a utilização de Labels no Dockerfile" \
+      versao="1.0" \
+      contato="+55 17 98293-8123"

@@ -1,0 +1,38 @@
+ARG ALPINE_VERSION="3.19.0"
+
+# FROM alpine:3.19.0
+FROM alpine:${ALPINE_VERSION}
+# docker image inspect --format='{{json .Config.Labels}}' <id_da_imagem>
+
+ENV DESENVOLVEDOR="Kauan Dias"
+
+RUN <<EOF
+    apk add --no-cache nodejs
+    apk add --no-cache npm
+    apk add --no-cache git
+    apk add --no-cache nano
+EOF
+
+LABEL desenvolvedor=${DESENVOLVEDOR} \
+      descricao="Imagem criada para exemplificar  a utilização de Labels no Dockerfile" \
+      versao="1.0" \
+      contato="+55 17 98293-8123"
+
+# Não pode haver espaço entre a variável de ambiente e o sinal de igual (=), caso contrário, o Dockerfile não será construído corretamente e resultará em um erro.
+# ENV FRONT_PRD="https://www.frontendpractices.com" \
+# ENV BACK_PRD="https://www.backendpractices.com" \
+# ENV VERSAO="1.0.1"
+
+
+# Sintaxe alternativa sem o "="
+ARG FRONT_PRD="https://www.frontendpractices.com"
+ARG BACK_PRD="https://www.meuapp.com.br:3002"
+
+# ENV tem prioridade sobre ARG, ou seja, se ambos forem definidos, o valor de ENV será usado. Portanto, se você definir ENV FRONT_PRD="https://meuapp.com.br:3000" após os ARGs, o valor de BACK_PRD será "https://meuapp.com.br:3000", independentemente do valor definido em ARG.
+ENV BACK_PRD="https://meuapp.com.br:3000"
+
+
+
+ENV FRONT_PRD=${FRONT_PRD}
+ENV BACK_PRD=${BACK_PRD}
+ENV VERSAO="1.0.1"
